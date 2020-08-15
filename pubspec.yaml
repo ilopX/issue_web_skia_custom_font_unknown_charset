@@ -20,6 +20,6 @@ flutter:
   uses-material-design: true
 
   fonts:
-    - family: Segoe
+    - family: Segoe_form_assets
       fonts:
         - asset: assets/Segoe_UI.ttf
