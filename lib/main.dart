@@ -7,12 +7,22 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final defaultFont = TextStyle(
+    final defaultSergeo = TextStyle(
       fontFamily: 'Sergeo UI',
       fontSize: 30,
     );
-    final customFont = TextStyle(
+    final segoe_form_assets = TextStyle(
       fontFamily: 'Segoe_form_assets',
+      fontSize: 30,
+    );
+
+    final alata_Regular_form_assets = TextStyle(
+      fontFamily: 'Alata_Regular_form_assets',
+      fontSize: 30,
+    );
+
+    final fira_code_form_assets = TextStyle(
+      fontFamily: 'FiraCode_form_assets',
       fontSize: 30,
     );
 
@@ -21,16 +31,23 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: Column(
           children: [
-            buildHeader(['default', 'custom']),
+            buildHeader([
+              'Sergeo UI',
+              'Segoe form_assets',
+              'Alata Regular form_assets',
+              'FiraCode form_assets'
+            ]),
             buildCharCodes(
                 startChar: ' ',
                 endChar: '~',
                 charBuilder: (char) {
                   return [
-                    Text(char, style: defaultFont),
+                    Text(char, style: defaultSergeo),
                     buildErrorIfUnknownChars(
-                        char: char, child: Text(char, style: customFont)
-                    ),
+                        char: char,
+                        child: Text(char, style: segoe_form_assets)),
+                    Text(char, style: alata_Regular_form_assets),
+                    Text(char, style: fira_code_form_assets),
                   ];
                 }),
           ],
@@ -48,7 +65,7 @@ class MyApp extends StatelessWidget {
           for (final header in headerNames)
             Text(
               header,
-              style: TextStyle(fontFamily: 'Arial', fontSize: 20),
+              style: TextStyle(fontFamily: 'Arial', fontSize: 15),
             ),
         ],
       ),
@@ -90,7 +107,6 @@ class MyApp extends StatelessWidget {
   Widget buildErrorIfUnknownChars({String char, Widget child}) {
     return '()'.contains(char)
         ? Container(
-
             color: Colors.red.withOpacity(0.7),
             child: child,
           )
